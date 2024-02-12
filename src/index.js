@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './steps/App';
+import "./index.css"
+import App from './c1-date-counter/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

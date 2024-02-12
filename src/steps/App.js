@@ -25,7 +25,7 @@ function App() {
     <div>
       <div className="close-btn" onClick={() => setOpen(!open)}>&times;</div>
       {open && (
-        <div className="steps">
+        <div className="container steps">
           <section className="step-numbers">
             {stepDetails.map((step, key) => <Step key={key} stepNumber={step.stepNumber} currentStepNumber={stepNumber} />)}
           </section>

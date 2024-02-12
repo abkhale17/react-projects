@@ -1,11 +1,7 @@
 .steps {
-  width: 600px;
-  margin: 100px auto;
-  background-color: #f8f9fa;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 48px;
-  padding: 32px 96px;
   border-radius: 10px;
   position: relative;
 
@@ -47,25 +43,6 @@
   display: flex;
   justify-content: space-between;
   grid-column: 1/-1;
-}
-
-.btn {
-  border: none;
-  background: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #0c8599;
-  padding: 8px 16px;
-  border-radius: 16px;
-  cursor: pointer;
-}
-
-.btn:disabled, .btn[disabled] {
-  background-color: #e9ecef;
-  font-weight: bold;
-  color: #9d9d9d;
-  cursor: not-allowed;
 }
 
 .close-btn {

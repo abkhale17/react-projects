@@ -20,3 +20,48 @@
     color: #343a40;
     line-height: 1;
   }
+
+  .container {
+    width: 600px;
+    margin: 100px auto;
+    padding: 32px 96px;
+    background-color: #f8f9fa;
+  }
+  
+  /* 
+    ----- BUTTONS -----
+  */
+  
+  .btn {
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0c8599;
+    padding: 8px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+  }
+  
+  .btn:disabled, .btn[disabled] {
+    background-color: #e9ecef;
+    font-weight: bold;
+    color: #9d9d9d;
+    cursor: not-allowed;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px
+  }
+
+  .mb-sm {
+    margin-bottom: 24px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
