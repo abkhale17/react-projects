@@ -18,7 +18,7 @@ function DateCounter() {
         <span>{daysCount}</span>
         <button className="btn" onClick={() => setDaysCount(n => n + steps)}>+</button>
       </div>
-      <h4 style={{textAlign: 'center'}}>{JSON.stringify(new Date())}</h4>
+      <p style={{textAlign: 'center'}}>{getNthDateFromToday(daysCount)}</p>
     </div>
   )
 }
@@ -27,4 +27,12 @@ function App() {
   return <DateCounter />
 }
 
+function getNthDateFromToday(days) {
+  let date = new Date()
+  date.setDate(date.getDate() + days)
+  if(days === 0) {
+    return "Today is the day"
+  }
+  return `${days} days from today is ${date.toDateString()}`
+}
 export default App
