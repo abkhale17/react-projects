@@ -56,6 +56,11 @@ body {
   color: #fff;
 }
 
+.items {
+  display: flex;
+  gap: 3rem
+}
+
 .filters {
   display: flex;
   gap: 1rem;
