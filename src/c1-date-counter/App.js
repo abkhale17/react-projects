@@ -18,7 +18,12 @@ function DateCounter() {
         <span>{daysCount}</span>
         <button className="btn" onClick={() => setDaysCount(n => n + steps)}>+</button>
       </div>
-      <p style={{textAlign: 'center'}}>{getNthDateFromToday(daysCount)}</p>
+      <p style={{textAlign: 'center'}}>{
+        daysCount === 0
+          ? <span>Today is ${getNthDateFromToday(daysCount)}</span>
+          : daysCount < 0 ? <span>{daysCount * -1 } days ago was {getNthDateFromToday(daysCount)}</span>
+          : <span>{daysCount} days from today is {getNthDateFromToday(daysCount)}</span>
+      }</p>
     </div>
   )
 }
@@ -30,9 +35,7 @@ function App() {
 function getNthDateFromToday(days) {
   let date = new Date()
   date.setDate(date.getDate() + days)
-  if(days === 0) {
-    return "Today is the day"
-  }
-  return `${days} days from today is ${date.toDateString()}`
+  return date.toDateString()
 }
+
 export default App
