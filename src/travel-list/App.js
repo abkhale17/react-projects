@@ -17,7 +17,7 @@ function App() {
       ...formData,
       itemName: formData.itemName.trim()
     }
-    formData.id = Math.floor(Math.random() * 100000000 )
+    newFormData.id = Math.floor(Math.random() * 100000000 )
     setTravelList(traveList.concat(newFormData))
     resetForm()
   }
