@@ -4,13 +4,35 @@ import "./App.css"
 function App() {
   const [traveList, setTravelList] = useState([])
   const [formData, setFormData] = useState({
+    id: null,
+    isCompleted: false,
     total: 1,
-    item: ""
+    itemName: ""
   })
 
   function handleSubmit(e) {
     e.preventDefault()
+    formData.id = Math.floor(Math.random() * 100000000 )
     setTravelList(traveList.concat(formData))
+  }
+
+  function markAsCompleted(id) {
+    console.log(traveList, "old")
+    let list = traveList.map(item => {
+      if(id === item.id) {
+        return {
+          ...item,
+          isCompleted: !item.isCompleted,
+        }
+      }
+      return item
+    })
+    console.log(list, "new")
+    setTravelList(list)
+  }
+
+  function deleteItem(id) {
+    setTravelList(traveList.filter(item => id !== item.id))
   }
 
   return (
@@ -25,7 +47,7 @@ function App() {
             Array(20).fill(0).map((_, key) => <option key={key} value={key+1} >{key+1}</option>)
           }
         </select>
-        <input type="text" placeholder="item..." value={formData.item} onChange={e => setFormData({ ...formData, item: e.target.value })}></input>
+        <input type="text" placeholder="item..." value={formData.itemName} onChange={e => setFormData({ ...formData, itemName: e.target.value })}></input>
         <button type="submit">ADD</button>
       </form>
       <main className="list-items">
@@ -33,8 +55,13 @@ function App() {
         {
           !traveList.length
             ? <p>Travel item list will appear here...</p>
-            : traveList.map((item, index) => <TravelListItem item={item} />)
-
+            : traveList.map((item, index) => (
+              <li className="travel-item" key={item.id}>
+                  <input onClick={() => markAsCompleted(item.id)} type="checkbox" id={"travel-item-"+item.id}></input>
+                  <label className={item.isCompleted ? "list-title completed-item" : "list-title"} htmlFor={"travel-item-"+item.id}>{item.total} {item.itemName}</label>
+                <span onClick={() => deleteItem(item.id)} className="delete-item">&#x2717;</span>
+              </li>
+            ))
         }
         </div>
         <div className="filters">
@@ -51,15 +78,6 @@ function App() {
         You have 4 items in your list, and you already packed 2 items (50%)
       </footer>
     </div>
-  )
-}
-
-function TravelListItem({item}) {
-  return (
-    <li>
-      <input type="checkbox" id="travel-item"></input>
-      <label>{item.item}</label>
-    </li>
   )
 }
 

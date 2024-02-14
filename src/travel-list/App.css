@@ -73,3 +73,18 @@ body {
   padding: 1.6rem 0;
   text-align: center;
 }
+
+.travel-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.delete-item {
+  cursor: pointer;
+  color: red;
+}
+
+.completed-item {
+  text-decoration: line-through;
+}
