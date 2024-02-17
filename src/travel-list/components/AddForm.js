@@ -32,7 +32,7 @@ function Form({ onAddItems }) {
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <p>What do you need for your trip?</p>
-      <select name="total" value={formData.total} onInput={e => setFormData({ ...formData, total: Number(e.target.value) })}>
+      <select name="total" value={formData.total} onInput={e => setFormData({ ...formData, total: +e.target.value })}>
         {
           Array(20).fill(0).map((_, key) => <option key={key} value={key+1} >{key+1}</option>)
         }
