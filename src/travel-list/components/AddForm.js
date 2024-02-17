@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Form({traveList, setTravelList}) {
+function Form({ onAddItems }) {
   const [formData, setFormData] = useState({
     id: null,
     isPacked: false,
@@ -13,10 +13,10 @@ function Form({traveList, setTravelList}) {
     if(!formData.itemName || (formData.itemName && !formData.itemName.trim())) return
     let newFormData = {
       ...formData,
-      itemName: formData.itemName.trim()
+      itemName: formData.itemName.trim(),
+      id: Date.now()
     }
-    newFormData.id = Math.floor(Math.random() * 100000000 )
-    setTravelList(traveList.concat(newFormData))
+    onAddItems(newFormData)
     resetForm()
   }
 
@@ -32,7 +32,7 @@ function Form({traveList, setTravelList}) {
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <p>What do you need for your trip?</p>
-      <select name="total" value={formData.total} onInput={e => setFormData({ ...formData, total: e.target.value })}>
+      <select name="total" value={formData.total} onInput={e => setFormData({ ...formData, total: Number(e.target.value) })}>
         {
           Array(20).fill(0).map((_, key) => <option key={key} value={key+1} >{key+1}</option>)
         }
